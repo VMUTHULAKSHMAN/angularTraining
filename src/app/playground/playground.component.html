@@ -1,0 +1,77 @@
+<p>playground works!</p>
+
+<mat-card class="card-main">
+
+  <mat-card class="card-increment">
+    <button class="button buttonIncrease" (click)="increaseNumber()">Increase</button>
+    <span class="buttonMat">
+        <button mat-raised-button color="primary" class="button" (click)="increaseNumber()">Increase</button>
+    </span>
+    <div style="margin-top: 10px;">
+      {{num}}
+    </div>
+  </mat-card>
+
+  <mat-card class="card-login-form">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label >Name</mat-label>
+          <input matInput formControlName="name" placeholder="Enter your name here!">
+          <mat-error *ngIf="myForm.get('name')?.invalid && (myForm.get('name')?.dirty || myForm.get('name')?.touched)">
+            Please provide a name.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label >Email</mat-label>
+          <input matInput formControlName="email" placeholder="Your email">
+          <mat-error *ngIf="myForm.get('email')?.invalid && (myForm.get('email')?.dirty || myForm.get('email')?.touched)">
+            Please provide a valid email address.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div> 
+        <mat-form-field appearance="outline">
+          <mat-label >Message</mat-label>
+          <input matInput formControlName="message" placeholder="Your message">
+          <mat-error *ngIf="myForm.get('message')?.invalid && (myForm.get('message')?.dirty || myForm.get('message')?.touched)">
+            atleast 15 characters long.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button mat-raised-button color="primary" class="button" type="submit" [disabled]="myForm.invalid">Send</button>
+      </div>
+
+    </form>
+  </mat-card>
+
+  <mat-card class="card-content">
+
+    <ng-template [ngIf]="testing" ></ng-template>
+      <div style="margin-bottom: 10px;" *ngIf="testing else falseblock">This is using ng template condition true</div>
+    <ng-template #falseblock>
+      <div style="margin-bottom: 10px;">This is using ng template condition false</div>
+    </ng-template>
+
+    <div>
+      <button mat-raised-button color="primary" class="button" type="submit" (click)="oncheck()" style="margin-right:20px">True</button>
+      <button mat-raised-button color="primary" class="button" type="submit" (click)="makeFalse()">False</button>
+    </div>
+  </mat-card>
+
+  <mat-card class="card-content" >
+    <ng-content></ng-content>
+    <ng-content class="desc"></ng-content>
+    <ng-content select="[dummyAttr]"></ng-content>
+  </mat-card>
+
+</mat-card>
+
+    

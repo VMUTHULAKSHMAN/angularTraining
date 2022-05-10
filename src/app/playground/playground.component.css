@@ -1,0 +1,58 @@
+
+.buttonIncrease {
+    border-radius: 8px;
+    background-color: #3f51b5;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    padding: 0px 16px;
+    min-width: 64px;
+    line-height: 36px;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    border-color: #3f51b5;
+}
+
+.buttonIncrease:hover{
+    cursor: pointer;
+}
+
+.buttonMat{
+    justify-content: flex-end;
+    padding: 30px;
+}
+
+.card-increment{
+    text-align: center; 
+    width: max-content;
+    height: max-content;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom: 15px;
+}
+
+.card-login-form{
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    width: max-content;
+    height: max-content;
+}
+
+.card-main{
+    background-color: antiquewhite; 
+    border: 1px solid black;
+    text-align: center;
+    margin: 10px;
+}
+
+.card-content{
+    margin: 10px;
+    width: max-content;
+    height: max-content;
+    text-align: center;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+
