@@ -1,0 +1,13 @@
+<!-- <p>search works!</p> -->
+<mat-form-field appearance="outline">
+    
+    <input matInput type="text" style="float:right"  placeholder="search for" [(ngModel)]="searchTable" 
+    name="searchTable" (ngModelChange)="searchEvent($event)">
+    
+</mat-form-field>
+
+<!-- <div *ngFor="let search of searchDetails">
+    <div>{{search.gender}}</div>
+    
+</div> -->
+
