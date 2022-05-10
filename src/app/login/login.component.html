@@ -1,0 +1,114 @@
+<p>login works!</p>
+
+<mat-card class="card-main">
+  
+  
+    <mat-card class="card-login-form">
+      
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+            <div>
+                <mat-form-field appearance="outline">
+                  <mat-label >Email</mat-label>
+                  <input matInput formControlName="email" required="emailpattern" placeholder="Your email">
+                  <mat-error *ngIf="(loginForm.get('email')?.invalid && loginForm.get('email')?.touched) || loginForm.get('email')?.dirty">
+                    <small *ngIf="loginForm.get('email')?.errors?.['required']" >Email is required</small>
+                    <small *ngIf="loginForm.get('email')?.errors?.['pattern']" >Please provide a valid email address</small>
+                  </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+              <app-password [passwordControl]="passwordControl" [disableControl]="false">
+                  <mat-error *ngIf="passwordControl.errors">
+                      <mat-error *ngIf="passwordControl.hasError('required')">Password is required</mat-error>
+                      <mat-error *ngIf="passwordControl.hasError('minlength')">Min length of 8 is required</mat-error>
+                  </mat-error>
+              </app-password>
+            </div>
+
+              <div> 
+                <app-password [passwordControl]="confirmPasswordControl" [disableControl]="false" [passwordlabel]="ConfirmPassword">
+                  <mat-error *ngIf="confirmPasswordControl.errors">
+                    <mat-error *ngIf="confirmPasswordControl.hasError('required')">Confirm Password is required.</mat-error>
+                    <mat-error *ngIf="confirmPasswordControl.hasError('confirmedValidator')">Password mismatch.</mat-error>
+                  </mat-error>  
+                </app-password>
+              </div>
+
+    
+          <div>
+            <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">submit</button>
+          </div>
+    
+        </form> 
+      </mat-card>
+      
+      <mat-card style="margin-top: 10px;">
+        <form>
+          <div>
+            <app-search [searchDetails]="searchdetails" (searchResults)="searchEvent($event)"></app-search>
+          </div>
+        </form>
+        <div>
+          
+
+          <table mat-table [dataSource]="dataSource">
+        
+            <ng-container matColumnDef="gender" >
+              <th mat-header-cell *matHeaderCellDef class="table-align"> gender  </th>
+              <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="first name" >
+              <th mat-header-cell *matHeaderCellDef class="table-align"> first ame </th>
+              <td mat-cell *matCellDef="let element"> {{element.name.first}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="last name" >
+              <th mat-header-cell *matHeaderCellDef class="table-align"> last name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name.last}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="username" >
+              <th mat-header-cell *matHeaderCellDef class="table-align"> username </th>
+              <td mat-cell *matCellDef="let element"> {{element.login.username}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="email" >
+              <th mat-header-cell *matHeaderCellDef class="table-align"> email </th>
+              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          
+
+          <mat-toolbar class="card-login-form">
+            <mat-toolbar-row>
+
+              <form [formGroup]="pageChange">
+                <mat-form-field appearance="outline" style=" margin-top: 30px; margin-right:20px; font-size: 16px;" class="change-page-field">
+
+                  <mat-label >number</mat-label>
+                  <input matInput type="text" formControlName="pageNumber"  placeholder="Enter a number" required="alteredPage" #updatenumber name="updatenumber">
+                  
+                  <mat-error>
+                    <small *ngIf="pageChange.get('pageNumber')?.errors?.['pattern']" >Enter a digit</small>
+                  </mat-error>
+
+                </mat-form-field>
+              </form>
+
+              <button mat-raised-button color="primary" type="submit" (click)="newPage(updatenumber.value)" style="margin-right:20px;">Change page</button>
+
+              <mat-paginator style="flex: 1" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements" ></mat-paginator>
+
+            </mat-toolbar-row>
+          </mat-toolbar>
+          
+          
+      </div>
+    </mat-card>
+    
+</mat-card>

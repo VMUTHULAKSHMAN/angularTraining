@@ -1,0 +1,32 @@
+.card-login-form{
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    width: max-content;
+    height: max-content;
+}
+
+.card-main{
+    background-color: antiquewhite; 
+    border: 1px solid black;
+    text-align: center;
+    margin: 10px;
+}
+
+table{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.table-align{
+    text-align: center;
+}
+
+.change-page-field::ng-deep .mat-form-field-flex > .mat-form-field-infix { 
+    padding: 0.4em 0px !important;
+}
+.change-page-field::ng-deep .mat-form-field-label-wrapper { 
+    top: -1.5em; 
+}
+
